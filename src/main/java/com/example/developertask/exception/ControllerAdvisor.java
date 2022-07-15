@@ -34,5 +34,15 @@ public class ControllerAdvisor {
         return new ResponseEntity<>(body, HttpStatus.UNAUTHORIZED);
     }
 
+    @ExceptionHandler(value = { Exception.class })
+    public ResponseEntity<Object> handleAnotherException(Exception ex, WebRequest request) {
+
+        Map<String, Object> body = new LinkedHashMap<>();
+        body.put("timestamp", LocalDateTime.now());
+        body.put("message", "Something went wrong");
+
+        return new ResponseEntity<>(body, HttpStatus.UNAUTHORIZED);
+    }
+
 
 }
